@@ -7,15 +7,90 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+## Demo
 
-## Requirements
+### Play
+Use RTMPPlayLayer class play rtmp video
 
-## Installation
+  * Play Action 
+		 
+		displayLayer.play(host: "rtmp://184.72.239.149/vod", name: "BigBuckBunny_115k.mov")
+  
+  * Stop
+     
+		 displayLayer.stop()
+ 
+  * Seek
+  		
+		displayLayer.seek(duration: 100)
+		
+  * Pause / UnPause
+  
+  		displayLayer.pause()
+		displayLayer.unPause()
+		
+  * Status Check
+       
+		 displayLayer.playStatus { [unowned self] (status) in
+            switch status {
+            case .connect:
+                self.pauseBtn.isHidden = false
+                self.btnPlay.setTitle("Disconnected", for: .normal)
+            case .failed(let err):
+                print(err)
+            case .unknown:
+                self.pauseBtn.isHidden = true
+            case .disconnected:
+                self.btnPlay.setTitle("Play", for: .normal)
+            case .pause:
+                self.pauseBtn.setTitle("Resume", for: .normal)
+            case .playStart:
+                self.pauseBtn.setTitle("Pause", for: .normal)
+                break
+            }
+        }
 
-MMRtmp is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Publish
+Use RTMPPublishLayer class publish video on server
 
+* Auth Layer
+	
+		publishLayer.authVideoAudio { (rc) in
+			if !rc {
+				let alert = UIAlertController.init(title: "Error", message: "you need auth your microphone and camera", preferredStyle: .alert)
+				let action = UIAlertAction.init(title: "confirm", style: .default, handler: nil)
+					alert.addAction(action)
+			}
+		}
+  
+ * Publish
+   
+   		publishLayer.publish(host: host, name: name)
+    
+ * Stop
+         
+  		publishLayer.publish(host: host, name: name)
+   
+ * Status Check
+       
+  		publishLayer.publishStatus { (status) in
+            switch status {
+            case .unknown, .disconnected:
+                self.btnConnect.setTitle("Publish", for: .normal)
+            case .connect:
+                self.btnConnect.setTitle("Disconnect", for: .normal)
+            case .failed(_):
+                self.btnConnect.setTitle("Publish", for: .normal)
+            case .publishStart:
+                break
+            }
+   		 }
+  
+
+* VideoFPS
+
+		publishLayer.videoFPS = 30
+	
 ```ruby
 pod 'MMRtmp'
 ```
