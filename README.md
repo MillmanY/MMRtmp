@@ -5,7 +5,11 @@
 [![License](https://img.shields.io/cocoapods/l/MMRtmp.svg?style=flat)](https://cocoapods.org/pods/MMRtmp)
 [![Platform](https://img.shields.io/cocoapods/p/MMRtmp.svg?style=flat)](https://cocoapods.org/pods/MMRtmp)
 
-Implement rtmp protocol play/publish with h264/aac 
+## RTMP
+
+* Publish/Play (H264/AAC)
+* Action Message Format (AMF0/AMF3)
+
 ## Demo
 
 ### Play
@@ -93,7 +97,6 @@ Use RTMPPublishLayer class publish video on server
 ```ruby
 pod 'MMRtmp'
 ```
-
 ## Author
 
 MillmanY, millmanyang@gmail.com
