@@ -20,6 +20,15 @@ Use RTMPPlayLayer class play rtmp video
      
 		 displayLayer.stop()
  
+  * Seek
+  		
+		displayLayer.seek(duration: 100)
+		
+  * Pause / UnPause
+  
+  		displayLayer.pause()
+		displayLayer.unPause()
+		
   * Status Check
        
 		 displayLayer.playStatus { [unowned self] (status) in
