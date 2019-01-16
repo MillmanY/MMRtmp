@@ -1,0 +1,6 @@
+framework module MMRtmp {
+  umbrella header "MMRtmp-umbrella.h"
+
+  export *
+  module * { export * }
+}

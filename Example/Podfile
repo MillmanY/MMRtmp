@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MMRtmp_Example' do
+  pod 'MMRtmp', :path => '../'
+
+  target 'MMRtmp_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
