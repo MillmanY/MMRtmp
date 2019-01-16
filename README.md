@@ -76,7 +76,12 @@ Use RTMPPublishLayer class publish video on server
                 break
             }
    		 }
-        
+  
+
+* VideoFPS
+
+		publishLayer.videoFPS = 30
+	
 ```ruby
 pod 'MMRtmp'
 ```
