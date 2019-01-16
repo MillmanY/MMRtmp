@@ -5,8 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/MMRtmp.svg?style=flat)](https://cocoapods.org/pods/MMRtmp)
 [![Platform](https://img.shields.io/cocoapods/p/MMRtmp.svg?style=flat)](https://cocoapods.org/pods/MMRtmp)
 
-## Example
-
+Implement rtmp protocol play/publish with h264/aac 
 ## Demo
 
 ### Play
