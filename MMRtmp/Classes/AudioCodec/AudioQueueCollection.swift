@@ -89,7 +89,7 @@ public class AudioQueueCollection {
         let rawPtr = data.withUnsafeBytes({ UnsafeRawPointer($0) })
         memcpy(b.pointee.mAudioData, rawPtr, size)
         b.pointee.mAudioDataByteSize = UInt32(size)
-        let enqueue = AudioQueueEnqueueBuffer(queueRef, b, UInt32(desc.count), &desc)
+        AudioQueueEnqueueBuffer(queueRef, b, UInt32(desc.count), &desc)
         bufferCount += 1
     }
     

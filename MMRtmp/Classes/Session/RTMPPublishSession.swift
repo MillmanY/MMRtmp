@@ -8,7 +8,6 @@
 
 import Foundation
 import AVFoundation
-
 public protocol RTMPPublishSessionDelegate: class {
     func sessionMetaData(_ session: RTMPPublishSession) -> [String: Any]
     func sessionStatusChange(_ session: RTMPPublishSession,  status: RTMPPublishSession.Status)

@@ -16,9 +16,9 @@ public extension RTMPPlayLayer {
 }
 
 public class RTMPPlayLayer: AVSampleBufferDisplayLayer {
+    private var statusCallBack: ((RTMPPlaySession.Status)->Void?)?
     fileprivate var audioCollection: AudioQueueCollection?
-    fileprivate var session =  RTMPPlaySession()
-    fileprivate var statusCallBack: ((RTMPPlaySession.Status)->Void?)?
+    public var session =  RTMPPlaySession()
     fileprivate var willResignObserver: Any?
     fileprivate var didBecomeActiveObserver: Any?
     public var reConnectWhenForground = true
@@ -149,7 +149,7 @@ extension RTMPPlayLayer {
 }
 
 extension RTMPPlayLayer: RTMPPlaySessionDelegate {
-    func sessionReceiveAudioHeader(_ session: RTMPPlaySession, audioHeader: AudioHeader) {
+    public func sessionReceiveAudioHeader(_ session: RTMPPlaySession, audioHeader: AudioHeader) {
         self.audioCollection = AudioQueueCollection(streamDesc: audioHeader.desc, startTime: audioHeader.startTime)
         self.audioCollection?.createAudioQueue(completed: { [weak self] in
             guard let self = self else {return}
@@ -157,19 +157,19 @@ extension RTMPPlayLayer: RTMPPlaySessionDelegate {
         })
     }
     
-    func sessionReceiveVideoHeader(_ session: RTMPPlaySession, videoHeader: VideoHeader) {
+    public func sessionReceiveVideoHeader(_ session: RTMPPlaySession, videoHeader: VideoHeader) {
         video.removeAll()
     }
     
-    func sessionReceiveData(_ session: RTMPPlaySession, audio: AudioBuffer) {
+    public func sessionReceiveData(_ session: RTMPPlaySession, audio: AudioBuffer) {
         self.audioCollection?.append(audio: audio)
     }
 
-    func sessionReceiveData(_ session: RTMPPlaySession, video: VideoBuffer) {
+    public func sessionReceiveData(_ session: RTMPPlaySession, video: VideoBuffer) {
         self.video.append(video)
     }
     
-    func sessionStatusChange(_ session: RTMPPlaySession, status: RTMPPlaySession.Status) {
+    public func sessionStatusChange(_ session: RTMPPlaySession, status: RTMPPlaySession.Status) {
         DispatchQueue.main.async { [weak self] in
             self?.statusCallBack?(status)
         }

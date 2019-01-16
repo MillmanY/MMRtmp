@@ -7,8 +7,7 @@
 //
 
 import Foundation
-
-protocol RTMPPlaySessionDelegate: class {
+public protocol RTMPPlaySessionDelegate: class {
     func sessionReceiveVideoHeader(_ session: RTMPPlaySession, videoHeader: VideoHeader)
     func sessionReceiveAudioHeader(_ session: RTMPPlaySession, audioHeader: AudioHeader)
     func sessionReceiveData(_ session: RTMPPlaySession, video: VideoBuffer)
@@ -16,7 +15,7 @@ protocol RTMPPlaySessionDelegate: class {
     func sessionStatusChange(_ session: RTMPPlaySession,  status: RTMPPlaySession.Status)
 }
 
-extension RTMPPlaySession {    
+extension RTMPPlaySession {
     public enum Status {
         case unknown
         case connect
@@ -33,7 +32,6 @@ public class RTMPPlaySession: NSObject {
     weak var delegate: RTMPPlaySessionDelegate?
     var message: PlayMessage?
     public var socket = RTMPSocket()
-
     public var playStatus: Status = .unknown {
         didSet {
             delegate?.sessionStatusChange(self, status: playStatus)
@@ -194,3 +192,4 @@ extension RTMPPlaySession: RTMPSocketDelegate {
         self.playStatus = .playStart
     }
 }
+

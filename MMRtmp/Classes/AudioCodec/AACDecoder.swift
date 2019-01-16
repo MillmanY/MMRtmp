@@ -197,7 +197,7 @@ public class AACDecoder {
     }
 
     func updateStreamDesc() {
-        if var s = streamDesc {
+        if let s = streamDesc {
             self.delegate.aacSetDescOutput(self, info: AudioHeader(desc: s, startTime: self.start))
         }
     }

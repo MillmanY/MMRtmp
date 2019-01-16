@@ -10,7 +10,7 @@ import AVFoundation
 
 public class RTMPPublishLayer: AVCaptureVideoPreviewLayer {
     fileprivate var statusCallBack: ((RTMPPublishSession.Status)->Void?)?
-    var publishSession =  RTMPPublishSession()
+    public var publishSession =  RTMPPublishSession()
     
     public var videoFPS: TimeInterval {
         get {
