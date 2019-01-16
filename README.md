@@ -13,7 +13,7 @@
 ## Demo
 
 ### Play
-Use RTMPPlayLayer class play rtmp video
+Use **RTMPPlayLayer** class play rtmp video
 
   * Play Action 
 		 
@@ -54,7 +54,7 @@ Use RTMPPlayLayer class play rtmp video
         }
 
 ### Publish
-Use RTMPPublishLayer class publish video on server
+Use **RTMPPublishLayer** class publish video on server
 
 * Auth Layer
 	
