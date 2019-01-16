@@ -12,7 +12,7 @@ public class RTMPPublishLayer: AVCaptureVideoPreviewLayer {
     fileprivate var statusCallBack: ((RTMPPublishSession.Status)->Void?)?
     var publishSession =  RTMPPublishSession()
     
-    var videoFPS: TimeInterval {
+    public var videoFPS: TimeInterval {
         get {
             guard let videoInput = AVCaptureDevice.default(for: .video) else {
                 return 30

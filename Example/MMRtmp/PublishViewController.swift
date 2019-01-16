@@ -19,7 +19,6 @@ class PublishViewController: UIViewController {
         super.viewDidLoad()
         txtHost.text = "rtmp://192.168.37.78/rtmplive"
         txtStreamName.text = "home"
-        
         capture.publishLayer.publishStatus { (status) in
             switch status {
             case .unknown, .disconnected:
